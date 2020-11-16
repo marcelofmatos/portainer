@@ -20,7 +20,7 @@ services:
         constraints: [node.platform.os == linux]
 
   server:
-    image: portainer/portainer:latest
+    image: portainer/portainer-ce:latest
     command: -H tcp://tasks.agent:9001 --tlsskipverify
     ports:
       - "9000:9000"
