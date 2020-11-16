@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  pma: 
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      #PMA_HOSTS: dbtest_database,dbreplica_database
+    networks:
+      - dbnet1
+      - web
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels:
+      - traefik.enable=true
+      - traefik.port=80
+      - traefik.frontend.rule=Host:${WEBSERVER_FQDN}
+      - traefik.protocol=http
+      - traefik.docker.network=web
+      #- traefik.frontend.auth.basic.users=pma:<pwdhash>
+            
+networks:
+  dbnet1:
+    external:
+      name: ligerosmart_default
+  web:
+    external: 
+      name: web
