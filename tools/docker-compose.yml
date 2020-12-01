@@ -6,6 +6,7 @@ services:
     environment:
       PMA_ARBITRARY: 1
       #PMA_HOSTS: dbtest_database,dbreplica_database
+      PMA_ABSOLUTE_URI: https://${WEBSERVER_FQDN}/pma/
     networks:
       - dbnet1
       - web
@@ -15,7 +16,7 @@ services:
       labels:
       - traefik.enable=true
       - traefik.port=80
-      - traefik.frontend.rule=Host:${WEBSERVER_FQDN}
+      - traefik.frontend.rule=Host:${WEBSERVER_FQDN};PathPrefixStrip:/pma
       - traefik.protocol=http
       - traefik.docker.network=web
       #- traefik.frontend.auth.basic.users=pma:<pwdhash>
