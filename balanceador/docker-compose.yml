@@ -11,9 +11,9 @@ services:
       - --docker.exposedbydefault=false 
       - --docker.domain=${DOMAIN} 
       - --docker.network=web 
-      - --debug=true 
+      - --debug=false
       - --logLevel=INFO
-      - --accessLog.filePath="/log/access.log"
+      #- --accessLog.filePath="/log/access.log"
       - --defaultentrypoints=https,http
       - --entryPoints=Name:http Address::80 Redirect.EntryPoint:https
       - --entryPoints=Name:https Address::443 TLS
