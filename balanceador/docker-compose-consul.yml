@@ -13,7 +13,7 @@ services:
       - --docker.exposedbydefault=false 
       - --docker.domain=${DOMAIN}
       - --docker.network=web 
-      - --debug=true
+      - --debug=false
       - --logLevel=INFO
       - --accessLog.format=json
       - --defaultentrypoints=https,http
