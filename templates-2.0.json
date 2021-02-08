@@ -43,6 +43,20 @@
 				"url": "https://github.com/LigeroSmart/ligerosmart-stack",
 				"stackfile": "docker-compose.swarm.yml"
 			}
+		},{
+			"type": 2,
+			"title": "Ferramentas",
+			"description": "Alguns softwares para manutenção e testes",
+			"note": "Stack com soluções de softwares para manutenção e testes do ambiente como um todo",
+			"categories": [
+				"teste"
+			],
+			"platform": "linux",
+			"logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-tools.svg/512px-Circle-icons-tools.svg.png",
+			"repository": {
+				"url": "https://github.com/LigeroSmart/ligerosmart-stack",
+				"stackfile": "tools/docker-compose.yml"
+			}
 		}
 	]
 }
