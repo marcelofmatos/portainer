@@ -63,7 +63,7 @@
 			"note": "Algumas ferramentas utilizadas para manutenção do ambiente e para testes de serviços",
 			"categories": [
 				"tools",
-				"teste",
+				"teste"
 			],
 			"platform": "linux",
 			"logo": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Traefik.logo.png",
@@ -72,9 +72,9 @@
 				"stackfile": "tools/docker-compose-consul.yml"
 			},
 			"env": [{
-				"name": "DOMAIN",
-				"label": "Domínio padrão do ambiente",
-				"description": "Domínio pelo qual o ambiente vai responder. Geralmente utilizado um endereço com wildcard para padronização. Referência: https://doc.traefik.io/traefik/v1.7/user-guide/examples/"
+				"name": "WEBSERVER_FQDN",
+				"label": "endereço FQDN do sistema",
+				"description": "Nome DNS de referência do sistema para acesso externo e para gerar automaticamente o certificado no LetsEncrypt, se ativado no traefik"
 			}]
 		}
 	]
