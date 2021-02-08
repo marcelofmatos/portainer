@@ -47,7 +47,7 @@
 				"name": "WEBSERVER_FQDN",
 				"label": "Endereço FQDN do ambiente",
 				"description": "Endereço pelo qual o ambiente vai responder. Se o LetsEncrypt estiver ativo no traefik, será o endereço do certificado"
-			}
+			}]
 		},{
 			"type": 2,
 			"title": "Ferramentas",
