@@ -5,7 +5,7 @@
 			"type": 2,
 			"title": "Balancer",
 			"description": "Balanceador com traefik",
-			"note": "The agent will be deployed globally inside your cluster and available on port 9001.",
+			"note": "The agent will be deployed traefik on manager and available on port 80 and 443.",
 			"categories": [
 				"balancer"
 			],
