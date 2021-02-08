@@ -28,6 +28,21 @@
 				"label": "Hash da senha de acesso ao dashboard",
 				"description": "Usar hash padrão do htpassword"
 			}]
+		},{
+			"type": 2,
+			"title": "LigeroSmart Community",
+			"description": "LigeroSmart Community stack",
+			"note": "Stack necessária para rodar todos os serviços do LigeroSmart Community",
+			"categories": [
+				"ITSM",
+				"ServiceDesk"
+			],
+			"platform": "linux",
+			"logo": "https://ligerosmart.com/wp-content/uploads/2019/07/logo-menor-1.png",
+			"repository": {
+				"url": "https://github.com/LigeroSmart/ligerosmart-stack",
+				"stackfile": "docker-compose.swarm.yml"
+			}
 		}
 	]
 }
