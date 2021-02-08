@@ -5,7 +5,7 @@
 			"type": 2,
 			"title": "Balancer",
 			"description": "Balanceador com traefik",
-			"note": "The agent will be deployed traefik on manager node and available on port 80 and 443.",
+			"note": "Proxy necessário para atender as requisições e repassar aos respectivos serviços. Contém configuração para geração automática de certificados com o LetsEncrypt",
 			"categories": [
 				"balancer"
 			],
