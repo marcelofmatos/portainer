@@ -56,26 +56,6 @@
 				"label": "senha do usuario root@localhost",
 				"description": "Senha com a qual o usuário root@localhost será cadastrada no primeiro acesso. O padrão é ligero"
 			}]
-		},{
-			"type": 2,
-			"title": "Tools",
-			"description": "Ferramentas básicas",
-			"note": "Algumas ferramentas utilizadas para manutenção do ambiente e para testes de serviços",
-			"categories": [
-				"tools",
-				"teste"
-			],
-			"platform": "linux",
-			"logo": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Traefik.logo.png",
-			"repository": {
-				"url": "https://github.com/LigeroSmart/ligerosmart-stack",
-				"stackfile": "tools/docker-compose-consul.yml"
-			},
-			"env": [{
-				"name": "WEBSERVER_FQDN",
-				"label": "endereço FQDN do sistema",
-				"description": "Nome DNS de referência do sistema para acesso externo e para gerar automaticamente o certificado no LetsEncrypt, se ativado no traefik"
-			}]
 		}
 	]
 }
