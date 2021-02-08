@@ -13,12 +13,20 @@
 			"logo": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Traefik.logo.png",
 			"repository": {
 				"url": "https://github.com/complemento/portainer",
-				"stackfile": "balanceador/docker-compose.yml"
+				"stackfile": "balanceador/docker-compose-consul.yml"
 			},
 			"env": [{
 				"name": "DOMAIN",
 				"label": "Domínio padrão do ambiente",
 				"description": "Domínio pelo qual o ambiente vai responder. Geralmente utilizado um endereço com wildcard para padronização. Referência: https://doc.traefik.io/traefik/v1.7/user-guide/examples/"
+			},{
+				"name": "ADMIN_USER",
+				"label": "Usuário de acesso ao dashboard",
+				"description": "Usuário para acesso à dashboard do traefik"
+			},{
+				"name": "HASHED_PASSWORD",
+				"label": "Hash da senha de acesso ao dashboard",
+				"description": "Usar hash padrão do htpassword"
 			}]
 		}
 	]
