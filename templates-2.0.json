@@ -28,6 +28,54 @@
 				"label": "Hash da senha de acesso ao dashboard",
 				"description": "Usar hash padrão do htpassword"
 			}]
+		},{
+			"type": 2,
+			"title": "LigeroSmart Community",
+			"description": "LigeroSmart Community stack",
+			"note": "Stack necessária para rodar todos os serviços do LigeroSmart Community",
+			"categories": [
+				"ITSM",
+				"ServiceDesk"
+			],
+			"platform": "linux",
+			"logo": "https://ligerosmart.com/wp-content/uploads/2019/07/logo-menor-1.png",
+			"repository": {
+				"url": "https://github.com/LigeroSmart/ligerosmart-stack",
+				"stackfile": "docker-compose.swarm.yml"
+			},
+			"env": [{
+				"name": "PROJECT_NAME",
+				"label": "Nome do projeto",
+				"description": "Palavra simples, sem espaços e sem caracteres especiais, para identificar o nome do projeto. Este nome é utilizado por exemplo para gerar o nome dos índices no Elasticsearch"
+			},{
+				"name": "WEBSERVER_FQDN",
+				"label": "endereço FQDN do sistema",
+				"description": "Nome DNS de referência do sistema para acesso externo e para gerar automaticamente o certificado no LetsEncrypt, se ativado no traefik"
+			},{
+				"name": "ROOT_PASSWORD",
+				"label": "senha do usuario root@localhost",
+				"description": "Senha com a qual o usuário root@localhost será cadastrada no primeiro acesso. O padrão é ligero"
+			}]
+		},{
+			"type": 2,
+			"title": "Tools",
+			"description": "Ferramentas básicas",
+			"note": "Algumas ferramentas utilizadas para manutenção do ambiente e para testes de serviços",
+			"categories": [
+				"tools",
+				"teste",
+			],
+			"platform": "linux",
+			"logo": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Traefik.logo.png",
+			"repository": {
+				"url": "https://github.com/LigeroSmart/ligerosmart-stack",
+				"stackfile": "tools/docker-compose-consul.yml"
+			},
+			"env": [{
+				"name": "DOMAIN",
+				"label": "Domínio padrão do ambiente",
+				"description": "Domínio pelo qual o ambiente vai responder. Geralmente utilizado um endereço com wildcard para padronização. Referência: https://doc.traefik.io/traefik/v1.7/user-guide/examples/"
+			}]
 		}
 	]
 }
