@@ -22,7 +22,8 @@
 			},{
 				"name": "ADMIN_USER",
 				"label": "Usuário de acesso ao dashboard",
-				"description": "Usuário para acesso à dashboard do traefik"
+				"description": "Usuário para acesso à dashboard do traefik",
+				"default": "admin"
 			},{
 				"name": "HASHED_PASSWORD",
 				"label": "Hash da senha de acesso ao dashboard",
@@ -47,6 +48,15 @@
 				"name": "WEBSERVER_FQDN",
 				"label": "Endereço FQDN do ambiente",
 				"description": "Endereço pelo qual o ambiente vai responder. Se o LetsEncrypt estiver ativo no traefik, será o endereço do certificado"
+			},{
+				"name": "PROJECT_NAME",
+				"label": "Nome do projeto",
+				"description": "Nome do projeto, sem espaços e sem caracteres especiais, para identificar por exemplo os índices dentro do Elasticsearch",
+				"default": "ligerosmart"
+			},{
+				"name": "ROOT_PASSWORD",
+				"label": "Senha padrão do root@localhost",
+				"default": "ligero"
 			}]
 		},{
 			"type": 2,
