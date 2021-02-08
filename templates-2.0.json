@@ -5,7 +5,7 @@
 			"type": 2,
 			"title": "Balancer",
 			"description": "Balanceador com traefik",
-			"note": "Proxy necessário para atender as requisições e repassar aos respectivos serviços. Contém configuração para geração automática de certificados com o LetsEncrypt",
+			"note": "Proxy necessário para atender as requisições nas portas 80 e 443 e repassar aos respectivos serviços. Contém configuração para geração automática de certificados com o LetsEncrypt",
 			"categories": [
 				"balancer"
 			],
