@@ -13,7 +13,7 @@
 			"logo": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Traefik.logo.png",
 			"repository": {
 				"url": "https://github.com/complemento/portainer",
-				"stackfile": "balancer/docker-compose.yml"
+				"stackfile": "balanceador/docker-compose.yml"
 			}
 		}
 	]
