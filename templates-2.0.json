@@ -53,10 +53,6 @@
 				"label": "Nome do projeto",
 				"description": "Nome do projeto, sem espaços e sem caracteres especiais, para identificar por exemplo os índices dentro do Elasticsearch",
 				"default": "ligerosmart"
-			},{
-				"name": "ROOT_PASSWORD",
-				"label": "Senha padrão do root@localhost",
-				"default": "ligero"
 			}]
 		},{
 			"type": 2,
@@ -71,7 +67,12 @@
 			"repository": {
 				"url": "https://github.com/LigeroSmart/ligerosmart-stack",
 				"stackfile": "tools/docker-compose.yml"
-			}
+			},
+			"env": [{
+				"name": "WEBSERVER_FQDN",
+				"label": "Endereço FQDN do ambiente",
+				"description": "Endereço pelo qual o ambiente vai responder. Se o LetsEncrypt estiver ativo no traefik, será o endereço do certificado"
+			}]
 		}
 	]
 }
