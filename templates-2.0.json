@@ -7,7 +7,7 @@
 			"description": "Balanceador com traefik",
 			"note": "Proxy necessário para atender as requisições nas portas 80 e 443 e repassar aos respectivos serviços. Contém configuração para geração automática de certificados com o LetsEncrypt",
 			"categories": [
-				"balancer"
+				"balanceador"
 			],
 			"platform": "linux",
 			"logo": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Traefik.logo.png",
@@ -27,34 +27,6 @@
 				"name": "HASHED_PASSWORD",
 				"label": "Hash da senha de acesso ao dashboard",
 				"description": "Usar hash padrão do htpassword"
-			}]
-		},{
-			"type": 2,
-			"title": "LigeroSmart Community",
-			"description": "LigeroSmart Community stack",
-			"note": "Stack necessária para rodar todos os serviços do LigeroSmart Community",
-			"categories": [
-				"ITSM",
-				"ServiceDesk"
-			],
-			"platform": "linux",
-			"logo": "https://ligerosmart.com/wp-content/uploads/2019/07/logo-menor-1.png",
-			"repository": {
-				"url": "https://github.com/LigeroSmart/ligerosmart-stack",
-				"stackfile": "docker-compose.swarm.yml"
-			},
-			"env": [{
-				"name": "PROJECT_NAME",
-				"label": "Nome do projeto",
-				"description": "Palavra simples, sem espaços e sem caracteres especiais, para identificar o nome do projeto. Este nome é utilizado por exemplo para gerar o nome dos índices no Elasticsearch"
-			},{
-				"name": "WEBSERVER_FQDN",
-				"label": "endereço FQDN do sistema",
-				"description": "Nome DNS de referência do sistema para acesso externo e para gerar automaticamente o certificado no LetsEncrypt, se ativado no traefik"
-			},{
-				"name": "ROOT_PASSWORD",
-				"label": "senha do usuario root@localhost",
-				"description": "Senha com a qual o usuário root@localhost será cadastrada no primeiro acesso. O padrão é ligero"
 			}]
 		}
 	]
