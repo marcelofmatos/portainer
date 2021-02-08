@@ -14,7 +14,12 @@
 			"repository": {
 				"url": "https://github.com/complemento/portainer",
 				"stackfile": "balanceador/docker-compose.yml"
-			}
+			},
+			"env": [{
+				"name": "DOMAIN",
+				"label": "Domínio padrão do ambiente",
+				"description": "Domínio pelo qual o ambiente vai responder. Geralmente utilizado um endereço com wildcard para padronização. Referência: https://doc.traefik.io/traefik/v1.7/user-guide/examples/"
+			}]
 		}
 	]
 }
