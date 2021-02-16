@@ -43,6 +43,9 @@ networks:
   web:
     external:
       name: web
+  #web:
+  #  driver: overlay
+  #  attachable: true
 
 volumes:
   log:
