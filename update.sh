@@ -2,4 +2,4 @@
 # docker network create --driver=overlay web
 
 docker service rm portainer_agent
-docker stack deploy --compose-file=portainer-agent-stack.yml portainer
+docker stack deploy --compose-file=portainer-stack.yml portainer
