@@ -70,8 +70,8 @@
 		},{
 			"type": 2,
 			"title": "LigeroSmart Community",
-			"description": "LigeroSmart Community stack",
-			"note": "Stack necessária para rodar todos os serviços do LigeroSmart Community. Veja mais em <a href='https://docs.ligerosmart.org'>https://docs.ligerosmart.org</a>",
+			"description": "LigeroSmart stack com os serviços integrados usando docker-compose v2 (single machine)",
+			"note": "Stack necessária para rodar todos os serviços do LigeroSmart. Veja mais em <a href='https://docs.ligerosmart.org'>https://docs.ligerosmart.org</a>",
 			"categories": [
 				"ITSM",
 				"ServiceDesk"
