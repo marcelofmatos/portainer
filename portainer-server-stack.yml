@@ -1,0 +1,38 @@
+version: '3.2'
+
+services:
+  server:
+    image: portainer/portainer-ce:latest
+    command: -H tcp://tasks.agent:9001 --tlsskipverify
+    ports:
+      - "9000:9000"
+    volumes:
+      - portainer_data:/data
+    networks:
+      - agent_network
+      - web
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+      labels:
+      - traefik.enable=true
+      - traefik.port=9000
+      - traefik.frontend.rule=Host:${PORTAINER_FQDN}
+      # for unique app FQDN
+      #- traefik.frontend.rule=Host:${PORTAINER_FQDN};PathPrefixStrip:/manager
+      - traefik.protocol=http
+      - traefik.docker.network=web
+
+networks:
+  agent_network:
+    driver: overlay
+    attachable: true
+  web:
+    external: true
+
+volumes:
+  portainer_data:
+
+
