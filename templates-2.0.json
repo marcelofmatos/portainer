@@ -102,7 +102,7 @@
 			}]
 		},{
 			"type": 2,
-			"title": "LigeroSmart Community",
+			"title": "LigeroSmart Open Source",
 			"description": "LigeroSmart stack com os serviços integrados usando docker-compose v3 (Docker Swarm)",
 			"note": "Stack necessária para rodar todos os serviços do LigeroSmart. Veja mais em <a href='https://docs.ligerosmart.org'>https://docs.ligerosmart.org</a>",
 			"categories": [
