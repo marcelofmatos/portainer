@@ -4,8 +4,9 @@ services:
   pma: 
     image: phpmyadmin/phpmyadmin
     environment:
-      PMA_ARBITRARY: 1
+      #PMA_ARBITRARY: 1
       #PMA_HOSTS: dbtest_database,dbreplica_database
+      PMA_HOSTS: ligerosmart_database
       PMA_ABSOLUTE_URI: https://${WEBSERVER_FQDN}/pma/
       UPLOAD_LIMIT: 51200000
     networks:
