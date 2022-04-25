@@ -8,7 +8,9 @@ services:
       #PMA_HOSTS: dbtest_database,dbreplica_database
       PMA_HOSTS: ligerosmart_database
       PMA_ABSOLUTE_URI: https://${WEBSERVER_FQDN}/pma/
-      UPLOAD_LIMIT: 51200000
+      UPLOAD_LIMIT: '512M'
+      MEMORY_LIMIT: '1G'
+      MAX_EXECUTION_TIME: 1200
     networks:
       - dbnet1
       - web
