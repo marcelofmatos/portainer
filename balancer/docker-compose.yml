@@ -18,6 +18,7 @@ services:
       - --entryPoints=Name:http Address::80 Redirect.EntryPoint:https
       - --entryPoints=Name:https Address::443 TLS
       #- --entryPoints=Name:https Address::443 TLS:/ssl/host.crt,/ssl/host.key
+      #- --entryPoints=Name:https Address::443 TLS:/ssl/host.crt,/ssl/host.key TLS.MinVersion:VersionTLS12 TLS.SniStrict:true TLS.CipherSuites:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
       #- --acme
       #- --acme.email=${ACME_EMAIL}
       #- --acme.storage=/ssl/acme.json
