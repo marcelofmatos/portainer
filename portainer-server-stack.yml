@@ -31,6 +31,7 @@ networks:
     attachable: true
   web:
     external: true
+    name: ${PROXY_NET:-proxy}
 
 volumes:
   portainer_data:

@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  traefik:
+    image: traefik:v2.3
+    command: 
+      - --api=true
+      #- --api.insecure=true
+      - --api.dashboard=true
+      #- --log.level=DEBUG
+      - --log.level=ERROR
+      #- --log.filePath=/log/traefik.log
+      #- --traefikLog.format=json
+      #- --defaultentrypoints=https,http
+      - --providers.docker
+      - --providers.docker.watch=true
+      - --providers.docker.network=proxy
+      - --providers.docker.swarmMode=true
+      - --providers.docker.exposedbydefault=false
+      #- --providers.docker.network=host 
+      #- --providers.docker.defaultRule={{ trimPrefix `/` .Name }}.mbm
+      #- --providers.docker.defaultRule=Host(`{{ .Name }}.mbm`)
+      #- --providers.docker.defaultRule=Host(`{{ index .Labels "VIRTUAL_HOST" }}.mbm`)
+      #- --providers.docker.defaultrule=Host(`{{ index .Labels "com.docker.swarm.service.name" | trimPrefix (index .Labels "com.docker.stack.namespace") | trimPrefix "_" }}.$DOMAIN`)
+      #- --providers.docker.defaultrule=Host(`{{ index .Labels "com.docker.swarm.service.name" }}.{{ index .Labels "com.docker.stack.namespace" }}.$DOMAIN`)
+      - --providers.docker.defaultrule=Host(`{{ substr (int ( add (len (index .Labels `com.docker.stack.namespace`)) 1)) 9999 .Name }}.{{ index .Labels "com.docker.stack.namespace" }}.$DOMAIN`)
+      #- "--providers.docker.defaultRule={{ substr (int ( add (len (index .Labels `com.docker.stack.namespace`)) 1)) 9999 .Name }}"
+      # API and dashboard configuration
+      - --entrypoints.web.address=:80
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entrypoints.web.http.redirections.entrypoint.scheme=https
+      - --entrypoints.websecure.address=:443
+      #- --insecureSkipVerify=true
+      #- --exposedByDefault=true
+      - --serverstransport.insecureskipverify=true
+      # letsencrypt
+      #- --certificatesresolvers.myresolver.acme.tlschallenge=true
+      - --certificatesresolvers.myresolver.acme.httpchallenge=true
+      - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
+      - --certificatesresolvers.myresolver.acme.email=marcelofmatos@gmail.com
+      - --certificatesresolvers.myresolver.acme.storage=/ssl/acme.json
+      # used during the challenge
+      #
+      # traefik pilot
+      #- --experimental.pilot.token=<traefik-pilot-token>
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ssl:/ssl
+      - log:/log
+    ports:
+      - 80:80
+      - 443:443
+      #- 127.0.0.1:8080:8080
+      #- 8880:8080 # abrir apenas se o endereco padrao falhar
+    networks:
+      - proxy
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        reservations:
+          cpus: '1'
+          memory: 1.5G
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        - traefik.enable=true
+        - "traefik.http.routers.api.middlewares=auth"
+        - "traefik.http.middlewares.auth.basicauth.users=${DASHBOARD_USER}:${DASHBOARD_HASH_PASSWORD}"
+        - "traefik.http.routers.api.service=api@internal"
+        - "traefik.http.routers.api.entrypoints=websecure"
+        - "traefik.http.routers.api.tls.certresolver=myresolver"
+        - "traefik.http.services.api.loadbalancer.server.port=8080"
+        #- "traefik.http.routers.api.rule=Host(`traefik.${DOMAIN}`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))"
+
+      
+ 
+networks:
+  proxy:
+    external: true
+    name: ${PROXY_NET:-proxy}
+    
+volumes:
+  ssl:
+    driver: local
+  log:
+    driver: local
