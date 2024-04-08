@@ -1,12 +1,13 @@
-version: '3'
+version: '3.8'
 
 services:
   pma: 
     image: phpmyadmin/phpmyadmin
     environment:
       PMA_ARBITRARY: 1
-      #PMA_HOSTS: dbtest_database,dbreplica_database
       PMA_ABSOLUTE_URI: https://${WEBSERVER_FQDN}/pma/
+      #PMA_HOSTS: dbtest_database,dbreplica_database
+      PMA_HOSTS: 
     networks:
       - dbnet1
       - web
@@ -26,5 +27,5 @@ networks:
     external:
       name: ligerosmart_default
   web:
-    external: 
-      name: web
+    external: true
+    name: ${PROXY_NET:-proxy}
