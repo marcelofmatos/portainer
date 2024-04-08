@@ -24,8 +24,8 @@ services:
             
 networks:
   dbnet1:
-    external:
-      name: ligerosmart_default
+    external: true
+    name: dbnet1_default
   web:
     external: true
     name: ${PROXY_NET:-proxy}
