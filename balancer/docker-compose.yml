@@ -48,10 +48,18 @@ services:
       - ssl:/ssl
       - log:/log
     ports:
-      - 80:80
-      - 443:443
+      #- 80:80
+      #- 443:443
       #- 127.0.0.1:8080:8080
       #- 8880:8080 # abrir apenas se o endereco padrao falhar
+      - target: 80
+        published: 80
+        protocol: tcp
+        mode: host
+      - target: 443
+        published: 443
+        protocol: tcp
+        mode: host
     networks:
       - proxy
     deploy:
