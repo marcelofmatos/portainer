@@ -12,7 +12,7 @@ services:
       MEMORY_LIMIT: '1G'
       MAX_EXECUTION_TIME: 1200
     networks:
-      - dbnet1
+      - ligerosmart
       - web
     deploy:
       mode: replicated
@@ -26,7 +26,7 @@ services:
       #- traefik.frontend.auth.basic.users=pma:<pwdhash>
             
 networks:
-  dbnet1:
+  ligerosmart:
     external:
       name: ligerosmart_default
   web:
