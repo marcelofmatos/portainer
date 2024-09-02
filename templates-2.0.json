@@ -136,7 +136,7 @@
 			"platform": "linux",
 			"logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Circle-icons-tools.svg/512px-Circle-icons-tools.svg.png",
 			"repository": {
-				"url": "https://github.com/LigeroSmart/ligerosmart-stack",
+				"url": "https://github.com/complemento/portainer",
 				"stackfile": "tools/docker-compose.yml"
 			},
 			"env": [{
