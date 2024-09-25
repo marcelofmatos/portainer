@@ -3,7 +3,7 @@
 
 cd $( dirname $0 )
 
-git pull
+git pull --strategy-option=theirs --allow-unrelated-histories --no-edit
 
 [[ -f .env ]] && export $(grep -v '^#' .env | xargs)
 docker service rm portainer_agent
