@@ -1,9 +1,16 @@
-# create network on first run
-# docker network create --driver=overlay web
+#!/bin/bash
+
+required_version="2.30.0"
+git_version=$(git --version | awk '{print $3}')
 
 cd $( dirname $0 )
 
-git pull --strategy-option=theirs --allow-unrelated-histories --no-edit
+if [ "$(printf '%s\n' "$required_version" "$git_version" | sort -V | head -n1)" != "$required_version" ]; then
+    echo "Recomenda-se a versão do Git igual ou superior a $required_version. Versão atual: $git_version."
+    git pull --no-edit
+else
+    git pull --strategy-option=theirs --allow-unrelated-histories --no-edit
+fi
 
 [[ -f .env ]] && export $(grep -v '^#' .env | xargs)
 docker service rm portainer_agent
