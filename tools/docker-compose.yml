@@ -9,7 +9,7 @@ services:
       #PMA_HOSTS: dbtest_database,dbreplica_database
       PMA_HOSTS: 
     networks:
-      - dbnet1
+      #- dbnet1
       - web
     deploy:
       mode: replicated

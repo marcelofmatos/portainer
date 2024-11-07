@@ -1,8 +1,9 @@
-version: '3.2'
+version: '3.5'
 
 services:
   agent:
     image: portainer/agent:latest
+    env_file: .env
     environment:
       # REQUIRED: Should be equal to the service name prefixed by "tasks." when
       # deployed inside an overlay network
@@ -14,34 +15,12 @@ services:
       - /var/lib/docker/volumes:/var/lib/docker/volumes
     networks:
       - agent_network
+    ports:
+      - "9001:9001"
     deploy:
       mode: global
       placement:
         constraints: [node.platform.os == linux]
-
-  server:
-    image: portainer/portainer-ce:latest
-    command: -H tcp://tasks.agent:9001 --tlsskipverify
-    ports:
-      - "9000:9000"
-    volumes:
-      - portainer_data:/data
-    networks:
-      - agent_network
-      - web
-    deploy:
-      mode: replicated
-      replicas: 1
-      placement:
-        constraints: [node.role == manager]
-      labels:
-      - traefik.enable=true
-      - traefik.port=9000
-      - traefik.frontend.rule=Host:${PORTAINER_FQDN}
-      # for unique app FQDN
-      #- traefik.frontend.rule=Host:${PORTAINER_FQDN};PathPrefixStrip:/manager
-      - traefik.protocol=http
-      - traefik.docker.network=web
 
 networks:
   agent_network:

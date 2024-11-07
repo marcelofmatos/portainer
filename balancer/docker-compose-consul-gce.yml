@@ -68,8 +68,6 @@ services:
       update_config:
         parallelism: 1
         delay: 10s
-      restart_policy:
-        condition: on-failure
       labels:
         - traefik.enable=true
         - traefik.port=8080
@@ -104,4 +102,8 @@ networks:
 
 volumes:
   consul-data:
-    driver: local
+    name: balancer-consul-data
+    driver: rexray/gcepd
+    driver_opts:
+      type: pd-standard
+      size: 10
