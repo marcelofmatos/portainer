@@ -44,7 +44,6 @@ services:
       # for unique app FQDN
       #- traefik.frontend.rule=Host:${PORTAINER_FQDN};PathPrefixStrip:/manager
       - traefik.protocol=http
-      - traefik.docker.network=web
 
 networks:
   agent_network:
