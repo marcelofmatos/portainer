@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   agent:
-    image: portainer/agent:alpine-lts
+    image: portainer/agent:lts
     #env_file: .env
     environment:
       # REQUIRED: Should be equal to the service name prefixed by "tasks." when
@@ -22,7 +22,7 @@ services:
         constraints: [node.platform.os == linux]
 
   server:
-    image: portainer/portainer-ce:alpine-lts
+    image: portainer/portainer-ce:lts
     command: -H tcp://tasks.agent:9001 --tlsskipverify
     #env_file: .env
     ports:
