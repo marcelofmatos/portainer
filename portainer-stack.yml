@@ -41,11 +41,17 @@ services:
         constraints: [node.role == manager]
       labels:
       - traefik.enable=true
+      # traefik v1
       - traefik.port=9000
       - traefik.frontend.rule=Host:${PORTAINER_FQDN}
       # for unique app FQDN
       #- traefik.frontend.rule=Host:${PORTAINER_FQDN};PathPrefixStrip:/manager
       - traefik.protocol=http
+      # traefik v3
+      - traefik.http.services.portainer-server.loadbalancer.server.port=9000
+      - traefik.http.routers.portainer-server.rule=Host(`${PORTAINER_FQDN}`)
+      - traefik.http.routers.portainer-server.tls=true
+      - traefik.http.routers.portainer-server.tls.certresolver=${CERTRESOLVER:-letsencryptresolver}
 
 networks:
   agent_network:
