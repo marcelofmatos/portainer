@@ -59,7 +59,7 @@ networks:
     attachable: true
   web:
     external: true
-    name: ${PROXY_NET:-proxy}
+    name: ${PROXY_NET:-web}
 
 volumes:
   portainer_data:
